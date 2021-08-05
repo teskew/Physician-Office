@@ -1,8 +1,9 @@
-<h1> New Physician </h1>
-<%= form_for(@physician) do |f| %>
+
+<h1>Edit Path</h1>
+<%= form_with(model: @physician) do |f| %>
     <%= f.label :Name%>
     <%= f.text_field :name%>
     <%= f.label :Email %>
     <%= f.text_field :email%>
-    <%= submit_tag 'Create Physican' %>
+    <%= submit_tag 'Edit Physican' %>
     <% end %> 

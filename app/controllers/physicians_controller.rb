@@ -4,9 +4,7 @@ class PhysiciansController < ApplicationController
     end
 
     def show
-        byebug
         @physician= Physician.find_by_id(params[:id])
-        #redirect_to to physician_path if !physician
     end
 
     def new 
@@ -21,6 +19,25 @@ class PhysiciansController < ApplicationController
         else
             render :new
         end
+    end
+    def edit 
+        @physician = Physician.find_by_id(params[:id])
+    end
+
+    def update 
+        @physician = Physician.find_by_id(params[:id])
+        @physician.update(physician_params)
+        if @physician.valid?
+            redirect_to physician_path(@physician)
+        else
+            render :edit
+        end
+    end
+
+    def destroy 
+        @physician = Physician.find_by_id(params[:id])
+        @physician.destroy 
+        redirect_to physicians_path
     end
 
     private 

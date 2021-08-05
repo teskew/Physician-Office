@@ -1,3 +1,5 @@
-h1>Physician PAGE</h1>
-<h3>Physician Name: <%= @physician.name %></h3>
-<h3>Physician Emai: <%= @physician.email %></h3>
+<h1>PHYSICIAN PAGE </h1>
+<%= @physician.name %>
+<%= @physician.email %>
+<%= link_to "Edit", edit_physician_path(@physcian)%>
+<%= link_to "Delete", physician_path(@physcian), method: 'delete' %>
