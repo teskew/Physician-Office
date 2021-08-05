@@ -4,8 +4,9 @@ class PhysiciansController < ApplicationController
     end
 
     def show
+        byebug
         @physician= Physician.find_by_id(params[:id])
-        redirect_to to physician_path if !@physician
+        #redirect_to to physician_path if !physician
     end
 
     def new 
