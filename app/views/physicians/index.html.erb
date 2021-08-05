@@ -1,0 +1,9 @@
+<h1>Physicians List: </h1>
+<u1>
+<% @physicians.each do |physician| %>
+   <li>
+   <%=  link_to physician.name, physicians_path( physician)%><br>
+   <%=  link_to physician.email, physicians_path( physician)%>
+   </li>
+<% end %> 
+  </u1>
