@@ -1,5 +1,6 @@
 class PhysiciansController < ApplicationController 
     def index  
+    
         @physicians = Physician.all
     end
 
@@ -36,8 +37,7 @@ class PhysiciansController < ApplicationController
 
     def destroy 
         @physician = Physician.find_by_id(params[:id])
-        @physician.destroy 
-        redirect_to physicians_path
+        
     end
        def heloworld
           
@@ -45,7 +45,7 @@ class PhysiciansController < ApplicationController
     private 
 
     def physician_params
-        params.require(:physician).permit(:name, :email)
+        params.require(:physician).permit(:name, :email, appiontements_attributes: [:appointement_datetime])
     end
     
 

@@ -5,11 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+a = Appointment.create([{appointement_datetime: DateTime.new(2021-09-15)}])
+Physician.create([{appointement: appointement_datetime, name: 'Dr Merdith', email: 'Merdith@Northwestern.com'},
+{Appointment: a, name: 'Dr Leonard', email: 'Leonard@Northwestern.com'},
+{Appointment: a, name: 'Dr Phillip', email: 'Phillip@Northwestern.com'}])
 
-
-
-user1 = User.create(name: 'Sam', email: "sam@sam.com", password_digest: "1234")
-cat1 = Category.create(name: 'Cardiology')
-phy1 = Physician.create( name: 'Dr Virginia', email: 'virgina@viva.com', category: cat1 )
-app1= Appointment.create(appointment: ('2021/08/03 8:00'), user: user1, physician: phy1)
-#Appointment.create([{:appointment => datetime.new(2021,9,17), user: user1, physician: phy1}])

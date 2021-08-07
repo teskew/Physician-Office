@@ -1,0 +1,5 @@
+<h1>Appointment PAGE</h1>
+<h3>Appointment Physician: <%= @appintment.appointement_datetime %></h3>
+
+<%= link_to "Edit", edit_appointement_path(@AppointmentsController)%>
+<%= link_to "Delete", appointtment_path(@appointement, method: 'delete' %>

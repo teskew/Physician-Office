@@ -1,9 +1,25 @@
 
-<h1>Edit Path</h1>
-<%= form_with(model: @physician) do |f| %>
-    <%= f.label :Name%>
-    <%= f.text_field :name%>
-    <%= f.label :Email %>
-    <%= f.text_field :email%>
-    <%= submit_tag 'Edit Physican' %>
-    <% end %> 
+<h1>Edit Physician: </h1>
+<% if @physicion.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@physician.errors.count, "error") %> prohibited this brand from being saved:</h2>
+
+    <ul>
+      <% @physician.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for(@physician) do |f| %>
+  <%= render partial: "form", locals: { fp: f } %>
+  <h3>Add Appointments:</h3>
+  <%= f.fields_for :appointments do |s| %>
+    <%= s.label :appointement_datetime %>
+    <%= s.datetime :appointement_datetime%><br/>
+    
+    <hr>
+  <% end %>
+  <%= f.submit %>
+  <% end %>
