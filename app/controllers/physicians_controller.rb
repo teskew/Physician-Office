@@ -39,14 +39,16 @@ class PhysiciansController < ApplicationController
         @physician.destroy 
         redirect_to physicians_path
     end
-
+       def heloworld
+          
+       end 
     private 
 
     def physician_params
         params.require(:physician).permit(:name, :email)
     end
     
-    
+
 
        
 end
