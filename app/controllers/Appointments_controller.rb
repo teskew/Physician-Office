@@ -1,21 +1,24 @@
 class AppointmentsController < ApplicationController 
     layout "appointement" 
     def index
-        if params[:physician_id] && @physician = Physician.find(params[:physician_id])
-        @appointments = @physician.appointments
-        else 
+        # if params[:physician_id] && @physician = Physician.find(params[:physician_id])
+        # @appointments = @physician.appointments
+        # else 
             @appointments = Appointment.all
+        # end
     end
     
     def show 
         @appointment= Appointment.find_by_id(params[:id])
     end
-     def parse_datetime(hash)
-        Time.now.parse("#{parse_date(hash)["date"])} #{hash["hour"]}: #{hash["min"]}")
-     end
+      
+    def parse_datetime(hash)
+      Time.now.parse("#{prase_date(hash["date"])} #{hash["hour"]} #{hash["hour"]}: #{hash["min"]}")
+
+    end
     def new 
         @appointment = Appointment.new
-       # 3.times { @appointment.shoes.build }
+        @appointment.build_physician
     end
     
     def create 
@@ -33,8 +36,9 @@ class AppointmentsController < ApplicationController
     
     def update 
         @appointment= Appointment.find_by_id(params[:id])
+        @appointement.update(appointement_params)
         if @appointment.valid? 
-            @appointment.update(appointment_params)
+           
             redirect_to appointment_path(@appointment)
         else 
             render :edit
@@ -48,7 +52,7 @@ class AppointmentsController < ApplicationController
     private 
     
     def appointment_params
-        params.require(:appointment).permit(:appointment_datetime, physicians_attributes: [:name, :email])
+        params.require(:appointment).permit(:appointment_datetime, user_id, physician_id, user_attributes:[:name, :email, :password] physicians_attributes: [:name, :email])
     end
     
     

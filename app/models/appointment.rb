@@ -1,7 +1,7 @@
 class Appointment < ApplicationRecord
     belongs_to :physician
     belongs_to :user
-    accepts_nested_attributes_for :physicion
+    accepts_nested_attributes_for :physician
     
     def physicion_attributes=(hash_of_attributes)
         # byebug
@@ -9,6 +9,9 @@ class Appointment < ApplicationRecord
             self.physicion = Physicion.find_or_create_by(hash_of_attributes)
         end
     end
-
+    def convert_datetime_to_readable
+        self.convert_datetime_to_long_format.split.insert(3,"at").join(" ")
+    end
+    
     
 end

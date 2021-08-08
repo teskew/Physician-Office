@@ -1,6 +1,5 @@
 class PhysiciansController < ApplicationController 
     def index  
-    
         @physicians = Physician.all
     end
 
@@ -10,6 +9,7 @@ class PhysiciansController < ApplicationController
 
     def new 
         @physician = Physician.new
+        3.times{@physican.appointements.build}
     end
 
     def create 
@@ -39,13 +39,11 @@ class PhysiciansController < ApplicationController
         @physician = Physician.find_by_id(params[:id])
         
     end
-       def heloworld
-          
-       end 
+      
     private 
 
     def physician_params
-        params.require(:physician).permit(:name, :email, appiontements_attributes: [:appointement_datetime])
+        params.require(:physician).permit(:name, :email, categorory_id, categories_attributes[:name])
     end
     
 

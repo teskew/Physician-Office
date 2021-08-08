@@ -1,8 +1,12 @@
 <%= render partial: "layouts/error", locals: { object: @appointment } %>
-<%= form_for([@physicion, @appointment ) do |f| %>
+<%= form_for(@appointment) do |f| %>
 <%= f.label :appointment_datetime %>
 <%= f.datetime :appointment_datetime %><br/>
-
-<%= physicians_fields(f) %>
-<%= f.submit %>
-<% end %>
+<% h3>Select  Already Existing physican:</h3>
+f.collection_select :physician_id, Physician.all, :id, :name %>
+<h3>Creat a Physician: </h3>
+<%= f.fields_for :Physician do |b| %>
+    <%= render partial: "physicians/form", locals: { fp: b } %>
+  <% end %>
+  <%= f.submit %>
+  <% end %>

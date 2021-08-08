@@ -1,22 +1,12 @@
 
 <h1>Edit Physician: </h1>
-<% if @physicion.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@physician.errors.count, "error") %> prohibited this brand from being saved:</h2>
 
-    <ul>
-      <% @physician.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
+<%= render partial:"layouts/error", locals: {object: @physican }%>
 <%= form_for(@physician) do |f| %>
   <%= render partial: "form", locals: { fp: f } %>
   <h3>Add Appointments:</h3>
   <%= f.fields_for :appointments do |s| %>
-    <%= s.label :appointement_datetime %>
+    <%= s.label :appointement%>
     <%= s.datetime :appointement_datetime%><br/>
     
     <hr>
