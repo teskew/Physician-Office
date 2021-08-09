@@ -1,7 +1,8 @@
-<h1> <%= @physican.name %></h1>
-<h1> <%= @physician.email%></h1>
 
-<h3><%=@physican.name %> Physician List: </h3>
-<% @physican.appointements.each do |appointement| %>
-<%= render @physician.appointements%>
-<% end %>
+
+<h1><%= @physician.name %></h1>
+    <%= @physician.email%></h1>
+
+    
+    <h3><%=@physician.name %> Appointments List: </h3>
+    <% render partial: "appointment", collection: @appointment %> 

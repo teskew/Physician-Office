@@ -1,11 +1,13 @@
 class AppointmentsController < ApplicationController 
    
     def index
-        if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
-           @appointments = @physician.appointments
-        else 
+        # if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
+        #    @appointments = @physician.appointments
+        # else 
             @appointments = Appointment.all
-        end
+        # end
+    end
+    def most_appointement
     end
     
     def show 
@@ -52,7 +54,7 @@ class AppointmentsController < ApplicationController
     private 
     
     def appointment_params
-        params.require(:appointment).permit(:appointment_datetime, user_id, physician_id, user_attributes:[:name, :email, :password] physicians_attributes: [:name, :email])
+        params.require(:appointment).permit(:appointment_datetime, user_id, physician_id, user_attributes:[:name, :email, :password], physicians_attributes: [:name, :email])
     end
     
     

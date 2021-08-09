@@ -4,11 +4,11 @@
 <%= render partial:"layouts/error", locals: {object: @physican }%>
 
 <%= form_for(@physician) do |f| %>
-  <%= render partial: "form", locals: { fp: f } %>
+  <%= render partial: "form", locals: { f: f } %>
   <h3>Add Appointments:</h3>
   <%= f.fields_for :appointments do |s| %>
-    <%= s.label :appointement_datetime %>
-    <%= s.datetime :appointement_datetime %><br/>
+    <%= s.label :appointment_datetime %>
+    <%= s.datetime_field :appointment_datetime %><br/>
     
     <hr>
   <% end %>

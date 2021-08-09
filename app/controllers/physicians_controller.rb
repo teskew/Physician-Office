@@ -9,10 +9,11 @@ class PhysiciansController < ApplicationController
 
     def new 
         @physician = Physician.new
-        #3.times{@physican.appointements.build}
+            appointment = @physician.appointments.build
     end
 
     def create 
+   
         @physician = Physician.new(physician_params)
       
         if @physician.save
@@ -43,7 +44,7 @@ class PhysiciansController < ApplicationController
     private 
 
     def physician_params
-        params.require(:physician).permit(:name, :email, categorory_id, categories_attributes[:name])
+        params.require(:physician).permit(:name, :email, category_id)
     end
     
 
