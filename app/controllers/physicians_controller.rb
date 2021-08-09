@@ -9,7 +9,7 @@ class PhysiciansController < ApplicationController
 
     def new 
         @physician = Physician.new
-        3.times{@physican.appointements.build}
+        #3.times{@physican.appointements.build}
     end
 
     def create 

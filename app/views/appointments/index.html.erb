@@ -1,5 +1,8 @@
-<h1>All of the Shoes!!</h1>
 
-<!--<% @appointements.each do |appointement| %>
-<%= render partial: "appointement, locals: {appointement: appointement}%>
-<% end %> --
+
+<h1>All of the Appointments!!</h1>
+
+<!--<% @appointments.each do |appointment| %>
+<%= render partial: "shoe", locals: {shoe: shoe}%>
+<% end %> --> 
+  <% render partial: "appointement", collection: @appointment %>

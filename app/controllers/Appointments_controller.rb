@@ -1,11 +1,11 @@
 class AppointmentsController < ApplicationController 
-    layout "appointement" 
+   
     def index
-        # if params[:physician_id] && @physician = Physician.find(params[:physician_id])
-        # @appointments = @physician.appointments
-        # else 
+        if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
+           @appointments = @physician.appointments
+        else 
             @appointments = Appointment.all
-        # end
+        end
     end
     
     def show 

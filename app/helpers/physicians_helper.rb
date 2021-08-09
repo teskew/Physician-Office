@@ -1,11 +1,10 @@
 module PhysiciansHelper
 
-def brand_fields(f) 
-
-    if @physician
-         f.hidden_field :physician_id, value: @physician.id 
-    else 
-         render partial: "physician_fields", locals: { f: f } 
-    end 
-end
+     def physician_exists_header 
+          if @physician
+             content_tag(:h1, "#{@physician.name} Appointments")
+          else 
+              content_tag(:h1, "Appointments!!")
+          end 
+      end
 end

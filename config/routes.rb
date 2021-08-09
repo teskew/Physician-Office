@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   #  get '/physicians', to: 'physicians#index'
    #get '/physician/:id', to: 'physician#show', as: 'physician'
-  resources :physicians, only: [:new, :create, :index]
+  resources :physicians, only: [:index, :create, :new]
   resources :physicians  do
      resources :appointments, shallow: true
   end

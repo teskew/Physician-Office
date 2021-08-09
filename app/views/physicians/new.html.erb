@@ -1,14 +1,15 @@
 <h1>Create A New Appointment </h1>
 
-<%= render partial:"layouts/error", locals: {object: @physican }%>
 
-<%= form_for(@physician) do |f| %>
-  <%= render partial: "form", locals: { fp: f } %>
-  <h3>Add Appointments:</h3>
-  <%= f.fields_for :appointments do |s| %>
-    <%= s.label :appointement_datetime %>
-    <%= s.datetime :appointement_datetime %><br/> 
-    <hr>
-  <% end %>
+
+  <%= form_for(@physician) do |f| %>
+     <%= render partial: "form", locals: { fp: f } %>
+
+      <h3>Add Appointments:</h3>
+       <%= f.fields_for :appointments do |s| %>
+       <%= s.label :appointment_datetime %>
+       <%= s.datetime_field :appointment_datetime  %><br/> 
+       <hr>
+      <% end %>
   <%= f.submit %>
   <% end %>

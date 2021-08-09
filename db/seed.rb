@@ -1,8 +1,9 @@
-a1 = Appointment.create(appointement_datetime: '2025-05-11', user_id: u1.id, physician_id: p1.id )
-c1 = Category.create(name:'Cardiology')
-p1 = Physician.create(name: 'Dr Bob', email: 'Bob@bob.com', category_id:c1.id)
-u1 = User.create( name: 'jone', email: 'jone@jone.com', password: '1234')
 
+c1 = Category.create(name:'Cardiology')
+p1 = Physician.create(name: 'Dr Bob', email: 'Bob@bob.com', category_id: c1.id)
+u1= User.create(name: "Jone", email: "jone@jone.com", password: "jone")
+
+a1 = Appointment.create(appointment_datetime: DateTime.new(2016, 03, 15, 18, 00, 0), user: u1, physician: p1)
 # user1 = User.create!(name: "sam", email: "sam@sam.com", password: "1234")
 
 # cat1 = Category.create!(name: "Cardiology" )
