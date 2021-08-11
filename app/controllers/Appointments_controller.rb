@@ -1,31 +1,43 @@
 class AppointmentsController < ApplicationController 
    
     def index
-        # if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
-        #    @appointments = @physician.appointments
-        # else 
+        if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
+           @appointments = @physician.appointments
+        else 
             @appointments = Appointment.all
-        # end
-    end
-    def most_appointement
+        end
     end
     
     def show 
         @appointment= Appointment.find_by_id(params[:id])
     end
+    # def appointment_order
+    #     @appointment = appointment.all.order(appointment_datetime)
+    #     render :index
+
+    #  end
+  
       
     def parse_datetime(hash)
       Time.now.parse("#{prase_date(hash["date"])} #{hash["hour"]} #{hash["hour"]}: #{hash["min"]}")
 
     end
+
     def new 
-        @appointment = Appointment.new
-        @appointment.build_physician
+        if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
+        @appointment = @physician.appointments.build
+        else
+            @appointment = Appointment.new
+            @appointment.build_physician
+
+        end
     end
     
     def create 
-        @appointment = Appointment.new(appointment_params)
-        if @appointment.save 
+        @appointment= Appointment.new(appointment_params)
+    
+        if @appointment.save
+
             redirect_to appointments_path
         else
             render :new
@@ -54,7 +66,7 @@ class AppointmentsController < ApplicationController
     private 
     
     def appointment_params
-        params.require(:appointment).permit(:appointment_datetime, user_id, physician_id, user_attributes:[:name, :email, :password], physicians_attributes: [:name, :email])
+        params.require(:appointment).permit(:appointment_datetime, :user_id, :physician_id, physician_attrubute: [:name, :email])
     end
     
     

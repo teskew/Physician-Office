@@ -1,9 +1,13 @@
 
+if @physicians
+  content_tag(:h1, "#{@physicians.name} Appointments:")
+
+   else 
+      content_tag(:h1, "All of the Appointments!!")
+end 
 
 <h1>All of the Appointments!!</h1>
 
-<% @appointments.each do |appointment| %>
-  <h2> <%=link_to "#{appointment.appointment_datetime}", appointment_path(appointment) %> </h2>
-  <% end %>
-  
-  
+    <% @appointments.each do |appointment| %>
+  <h2> <%= link_to appointment.appointment_datetime, appointment_path(appointment) %></h2>
+   <% end %>

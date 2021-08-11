@@ -1,18 +1,25 @@
 class Appointment < ApplicationRecord
-    belongs_to :physician
-    # belongs_to :user
-    accepts_nested_attributes_for :physician
+     belongs_to :physician
+     belongs_to :user
     
-    def physicion_attributes=(hash_of_attributes)
-       
-        if !hash_of_attributes["name"].blank? && !hash_of_attributes["email"].blank?
-            self.physicion = Physicion.find_or_create_by(hash_of_attributes)
-        end
+     def physician_name
+        self.physician.name
     end
+
+    def user_name
+        self.patient.name
+    end
+
+    # => "December 04, 2007 00:00"
+    def convert_datetime_to_long_format
+        self.appointment_datetime.to_formatted_s(:long)
+    end
+
     def convert_datetime_to_readable
         self.convert_datetime_to_long_format.split.insert(3,"at").join(" ")
     end
-       
-    
     
 end
+    
+    
+

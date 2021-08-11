@@ -1,0 +1,5 @@
+@category.name %> Show Page </h1>
+
+<% @category.physician.each do |physician|%>
+  <%=link_to physician.name, physician_path(physician) %> - <%= link_to physician.email, physician_path(physician) %>
+<% end %>

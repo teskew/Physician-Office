@@ -1,12 +1,13 @@
-<h1>Create Appointment </h1>
-<%= render partial: "form" %>
+<h1>Create New Appointment </h1>
 
 
 
-<%= form_with( model: @appointment) do |f| %>
-  <%= f.label :physicion %>
-  <%= f.text_field :physician%>
-  <%= f.label :appointements %>
-  <%= f.datetime_field :appointment_datetime%>
-  <%= f.submit %>
-  <% end %> 
+  <%= form_for([@physician, @appointement]) do |f| %>
+    <%= f.label :name%>
+    <%= f.text_field :name%><br/>
+    <%= f.label :email %>
+    <%= f.text_field :email%><br/>
+    
+    <%= fields_for_physician(f) %>
+    <%= f.submit %>
+    <% end %> 

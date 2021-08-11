@@ -8,8 +8,9 @@ class PhysiciansController < ApplicationController
     end
 
     def new 
-        @physician = Physician.new
-            appointment = @physician.appointments.build
+            @physician = Physician.new
+            3.times { @physician.appointments.build }
+            @physician_build_category
     end
 
     def create 
@@ -44,7 +45,7 @@ class PhysiciansController < ApplicationController
     private 
 
     def physician_params
-        params.require(:physician).permit(:name, :email, category_id)
+        params.require(:physician).permit(:name, :email, :category_id, category_attributes: [:name])
     end
     
 
