@@ -10,7 +10,7 @@ class PhysiciansController < ApplicationController
 
     def show
         @physician= Physician.find_by_id(params[:id])
-        redirect_to Physicians_path if !@Physician
+        redirect_to physicians_path if !@Physician
     end
 
     def new 
@@ -22,8 +22,8 @@ class PhysiciansController < ApplicationController
 
     def create 
    
-        #@physician = Physician.new(physician_params)
-        @physician = current_user.physicians.build(physician_params)
+        @physician = Physician.new(physician_params)
+       
         if @physician.save
             redirect_to physicians_path(physician)
         else

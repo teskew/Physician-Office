@@ -43,7 +43,7 @@ class AppointmentsController < ApplicationController
         #      @physician= Physician.find_by_id(params[:brand_id])
         #      end
         @appointment = Appointment.new(appointment_params)
-        if params[physician_id]
+        if params[:physician_id]
             @physician = Physician.find_by_id(params[:physician_id])
         end
         

@@ -11,10 +11,8 @@
   </head>
 
   <body>
-  <%= link_to "Create Appointment", new_appointment_path %> |
-  <%= link_to "Appointment", appointments_path %> |
-  <%= link_to "Create Physician", new_physician_path %> |
-  <%= link_to "Physicians", physicians_path %> | 
+  
+  <%= render 'layouts/navigation' %>
   <% flash.each do |type, msg| %>
     <%= msg %>
   <% end %>

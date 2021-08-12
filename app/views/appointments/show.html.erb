@@ -1,7 +1,9 @@
-<h1>Appointment Page </h1>
 
-h1>Appointment Show Page</h1>
 
-<h1>Appointment Date:- <%=@appointment.appointment_datetime.strftime("%B %-d, %Y at %k:%M")%><br>
-<h2>Physician:- <%= @appointement.physicians.name %> - <%= @appointement.physicians.email %> </h2>
+
+
+<h1>Appointment Date:- <%= (@appointment.appointment_datetime) %></h1> 
+<h2>Physician List:- <%= link_to @appointment.physician.name, physician_path(@appointment.physician) if @appointment.physician %> 
+<h2>Category To:- <%= @appointment.category.name %></h2>
+
 
