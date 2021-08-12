@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
-    has_many :physicians
-    
+    has_many :appointments
+    has_many :physicians, through: :appointments
 end

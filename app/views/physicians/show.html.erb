@@ -1,14 +1,8 @@
 
 
+<h1><%= @physican.name %></h1>
+<%= @physican.email%>
+<h3><%=@physican.name %> Physicians List: </h3>
+<%= render @physican.appointements %>
 
-    
-phycisians/show.html.erb
-
-<h2>phycisian:<%=@phycisian.name%></h2> 
-<br>
-<label>Appointment Time</label> <br>
-<%@phycisian.appointments.each do |a|%>
-    <%=a.convert_datetime_to_readable%> 
-    <%=link_to a.patient_name, patient_path(a.patient)%> <br>
-<% end %> 
 

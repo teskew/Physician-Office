@@ -1,10 +1,10 @@
 
 <h1>Edit Physician: </h1>
 
-<%= render partial:"layouts/error", locals: {object: @physican }%>
+
 
 <%= form_for(@physician) do |f| %>
-  <%= render partial: "form", locals: { f: f } %>
+  <%= render partial: "form", locals: { fp: f } %>
   <h3>Add Appointments:</h3>
   <%= f.fields_for :appointments do |s| %>
     <%= s.label :appointment_datetime %>

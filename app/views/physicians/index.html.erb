@@ -4,6 +4,6 @@
 
 <ul>
 <% @physicians.each do |physician| %>
-  <li><%= link_to physician.name, physician_path(physician) %> </li>
+  <li><%= link_to physician.name, physician_path(physician) %> - <%= link_to physician.email, physician_path(physician) %></li>
 <% end %>
 </ul>

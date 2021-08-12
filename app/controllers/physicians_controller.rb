@@ -1,24 +1,31 @@
 class PhysiciansController < ApplicationController 
     def index  
-        @physicians = Physician.all
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @physicians = @user.physicians.all
+          else
+            flash[:message] = "The user doesn't exist" if params[:user_id]
+            @physicians = Physician.all
+          end
     end
 
     def show
         @physician= Physician.find_by_id(params[:id])
+        redirect_to Physicians_path if !@Physician
     end
 
     def new 
             @physician = Physician.new
-            3.times { @physician.appointments.build }
-            @physician_build_category
+            c = @physician.appointments.build 
+             c.build_category
+             #@physician_build_category
     end
 
     def create 
    
-        @physician = Physician.new(physician_params)
-      
+        #@physician = Physician.new(physician_params)
+        @physician = current_user.physicians.build(physician_params)
         if @physician.save
-            redirect_to physicians_path
+            redirect_to physicians_path(physician)
         else
             render :new
         end
@@ -39,13 +46,15 @@ class PhysiciansController < ApplicationController
 
     def destroy 
         @physician = Physician.find_by_id(params[:id])
-        
+        @physician.destroy 
+        redirect_to locations_path
     end
       
     private 
 
     def physician_params
-        params.require(:physician).permit(:name, :email, :category_id, category_attributes: [:name])
+        params.require(:physician).permit(:name, :email, :user_id, category_ids:[], user_attributes:[:username], appointments_attributes: [:appointment_datetime, category_attributes: [:name]])
+    
     end
     
 

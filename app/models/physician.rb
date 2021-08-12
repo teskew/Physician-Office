@@ -1,7 +1,8 @@
 class Physician < ApplicationRecord
+    belongs_to :user
     has_many :appointments
-    # has_many :users, through: :appointments
-    belongs_to :category
+    #has_many categories through: :appointments
+    
     validates :name, presence: true
     validates :email, presence: true
     

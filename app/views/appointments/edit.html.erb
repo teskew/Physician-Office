@@ -1,2 +1,5 @@
-
-<%= render partial: "form" %>
+<%= form_for(@appointment) do |f| %>
+    <%= f.label :appointment_datetime%>
+    <%= f.datetime_field :appointment_datetime %>
+    <%= f.submit "Update Appointment" %>
+  <% end %>

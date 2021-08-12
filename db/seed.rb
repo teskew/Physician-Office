@@ -1,9 +1,9 @@
-
-c1 = Category.create(name:'Cardiology')
-p1 = Physician.create(name: 'Dr Bob', email: 'Bob@bob.com', category_id: c1.id)
 u1= User.create(name: "Jone", email: "jone@jone.com", password: "jone")
+c1 = Category.create(name:'Cardiology')
+p1 = Physician.create(name: 'Dr Bob', email: 'Bob@bob.com', user: u1)
 
-a1 = Appointment.create(appointment_datetime: DateTime.new(2016, 03, 15, 18, 00, 0), user: u1, physician: p1)
+
+ a1=  Appointment.create(appointment_datetime: DateTime.new(2016, 03, 15, 18, 00, 0), category: c1, physician: p1)
 # user1 = User.create!(name: "sam", email: "sam@sam.com", password: "1234")
 
 # cat1 = Category.create!(name: "Cardiology" )
@@ -16,6 +16,6 @@ a1 = Appointment.create(appointment_datetime: DateTime.new(2016, 03, 15, 18, 00,
 
 
 
-# app1 = Appointment.create!(appointement_date: 2021-01-01, user: user1, physican_id: phy1.id)
-# # app2 = Appointment.create(appointement_date: "2021-02-02", user: user1, physican: phy2)
+# p1 = Appointment.create!(appointement_date: 2021-01-01, category: c1, physician: p1)
+# # app2 = Appointment.create(appointement_date: "2021-02-02", user: user1, physician: p1)
 # app3 = Appointment.create(appointement_date: "2021-03-03", user: user1, physican: phy3)
