@@ -27,7 +27,7 @@ class PhysiciansController < ApplicationController
         #@physician = Physician.new(physician_params)
         @physician= current_user.physicians.build(physician_params)
         if @physician.save
-            redirect_to physician_path(physician)
+            redirect_to physician_path(@physician)
         else
             render :new
         end
@@ -55,7 +55,7 @@ class PhysiciansController < ApplicationController
     private 
 
     def physician_params
-        params.require(:physician).permit(:name, :email, :user_id, category_ids:[], user_attributes:[:username], appointments_attributes: [:date], category_attributes: [:name]])
+        params.require(:physician).permit(:name, :email, :user_id, category_ids:[], user_attributes:[:username], appointments_attributes: [:date, category_attributes: [:name]])
     
     end
     

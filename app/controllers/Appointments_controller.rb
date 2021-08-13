@@ -1,8 +1,8 @@
 class AppointmentsController < ApplicationController 
    
-    before_action :redirect_if_not_logged_in
-    layout "appintment" 
-    def index
+    # before_action :redirect_if_not_logged_in
+    # layout "appintment" 
+     def index
         if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
             @appointments= @physician.appointments
         else
@@ -34,7 +34,7 @@ class AppointmentsController < ApplicationController
     
             else
             @appointment = Appointment.new
-            @appointment = @physician.appointments.build
+            @appointment.build_physician
             @appointment.build_category
          end
         end
