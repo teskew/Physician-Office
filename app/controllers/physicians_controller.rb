@@ -1,4 +1,6 @@
 class PhysiciansController < ApplicationController 
+    before_action :redirect_if_not_logged_in
+    
     def index  
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
             @physicians = @user.physicians.all
@@ -9,23 +11,23 @@ class PhysiciansController < ApplicationController
     end
 
     def show
-        @physician= Physician.find_by_id(params[:id])
+        @physician = Physician.find_by_id(params[:id])
         redirect_to physicians_path if !@Physician
     end
 
     def new 
             @physician = Physician.new
-            c = @physician.appointments.build 
-             c.build_category
+            t = @physician.appointments.build 
+             t.build_category
              #@physician_build_category
     end
 
     def create 
    
-        @physician = Physician.new(physician_params)
-       
+        #@physician = Physician.new(physician_params)
+        @physician= current_user.physicians.build(physician_params)
         if @physician.save
-            redirect_to physicians_path(physician)
+            redirect_to physician_path(physician)
         else
             render :new
         end
@@ -53,7 +55,7 @@ class PhysiciansController < ApplicationController
     private 
 
     def physician_params
-        params.require(:physician).permit(:name, :email, :user_id, category_ids:[], user_attributes:[:username], appointments_attributes: [:appointment_datetime, category_attributes: [:name]])
+        params.require(:physician).permit(:name, :email, :user_id, category_ids:[], user_attributes:[:username], appointments_attributes: [:date], category_attributes: [:name]])
     
     end
     

@@ -1,10 +1,12 @@
 class SessionsController < ApplicationController
 
+    
+    
     def create 
         #
         user = User.find_by(username: params[:user][:username])
         if user && user.authenticate(params[:user][:password])
-        # if user.try(:authenticate, params[:user][:password])   
+     
             session[:user_id] = user.id
             redirect_to locations_path
         else
@@ -14,8 +16,7 @@ class SessionsController < ApplicationController
 
     end
     def omniauth
-        # User.find_or_create_by(name: params["name"])
-        # user = User.from_omniauth(auth)
+       
         user = User.from_omniauth(auth)
         if user.valid? 
           session[:user_id] = user.id
@@ -38,7 +39,4 @@ class SessionsController < ApplicationController
      request.env['omniauth.auth']
     end
     
-
-
-
 end

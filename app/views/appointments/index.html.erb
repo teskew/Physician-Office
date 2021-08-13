@@ -2,5 +2,5 @@
        <h1>All the appointments</h1>
     <% @appointments.each do |appointment| %>
       <li><%= link_to appointment.physician.name, physician_path(appointment) %>: - <%= appointment.physician.email %></li>
-      <h3>Appointment Date: <%= link_to appointment.appointment_datetime, appointment_path(appointment) %></h3>
+      <h3>Appointment List: <%= link_to appointment.date, appointment_path(appointment) %></h3>
     <% end %>

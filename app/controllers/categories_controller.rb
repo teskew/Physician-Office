@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController 
-   
+  before_action :redirect_if_not_logged_in
     def index
         @categorys = Category.all
     end
@@ -10,8 +10,8 @@ class CategoriesController < ApplicationController
 
     def new
         @category = Category.new
-        c= @category.trips.build 
-        c.build_physician
+        t = @category.appointments.build 
+        t.build_physician
     end
 
     def create

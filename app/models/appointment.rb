@@ -1,15 +1,7 @@
 class Appointment < ApplicationRecord
      belongs_to :physician
      belongs_to :category
-    
-     def physician_name
-        self.physician.name
-    end
-
-    def user_name
-        self.patient.name
-    end
-    
+     
 
     # => "December 04, 2007 00:00"
     def convert_datetime_to_long_format
@@ -21,6 +13,5 @@ class Appointment < ApplicationRecord
     end
     
 end
-    
     
 

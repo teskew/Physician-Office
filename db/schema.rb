@@ -13,11 +13,13 @@
 ActiveRecord::Schema.define(version: 2021_08_03_184145) do
 
   create_table "appointments", force: :cascade do |t|
-    t.datetime "appointment_datetime"
-    t.integer "category_id"
+    t.datetime "date"
     t.integer "physician_id"
+    t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_appointments_on_category_id"
+    t.index ["physician_id"], name: "index_appointments_on_physician_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -32,10 +34,11 @@ ActiveRecord::Schema.define(version: 2021_08_03_184145) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_physicians_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "username"
     t.string "email"
     t.string "password_digest"
     t.string "uid"
