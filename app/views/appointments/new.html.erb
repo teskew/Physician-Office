@@ -1,10 +1,15 @@
    
    <h1> Physician Form </h1>
+
 <%= form_for([@physician, @appointment]) do |f| %>
   <%= f.hidden_field :physician_id %>
-  <%= f.label :data%>
+  <%= f.label :date%>
   <%= f.datetime_field :date%>
 
+  <% if @physician %>
+  <%= f.hidden_field :physician_id, value: @physician.id %>
+<% else %>
+      
 
   <h3>Select an Already Existing physician: </h3>
     <%= f.collection_select :physician_id, Physician.all, :id, :name %> -

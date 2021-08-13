@@ -1,7 +1,0 @@
-<%= render partial: "layouts/error", locals: { object: @appointment } %> 
-<%= form_for([@physican, @appointment]) do |f| %>
- 
-  <%= f.datetime_field :appointment_datetime %><br/>
-  <%= physican_fields(f) %>
-  <%= f.submit %>
-  <% end %>

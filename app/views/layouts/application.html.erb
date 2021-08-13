@@ -16,6 +16,7 @@
   <% flash.each do |type, msg| %>
     <%= msg %>
   <% end %>
+  <%= @error %>
     <%= yield %>
   </body>
 </html>
