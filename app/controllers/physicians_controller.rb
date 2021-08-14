@@ -17,8 +17,8 @@ class PhysiciansController < ApplicationController
 
     def new 
             @physician = Physician.new
-            t = @physician.appointments.build 
-             t.build_category
+            p = @physician.appointments.build 
+             p.build_category
              #@physician_build_category
     end
 
@@ -55,7 +55,7 @@ class PhysiciansController < ApplicationController
     private 
 
     def physician_params
-        params.require(:physician).permit(:name, :email, :user_id, category_ids:[], user_attributes:[:username], appointments_attributes: [:date, category_attributes: [:name]])
+        params.require(:physician).permit(:name, :email, :user_id, category_ids:[], user_attributes:[:username], appointments_attributes: [:date, :category_id, categories_attributes: [:name]])
     
     end
     

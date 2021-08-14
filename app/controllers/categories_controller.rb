@@ -10,8 +10,8 @@ class CategoriesController < ApplicationController
 
     def new
         @category = Category.new
-        t = @category.appointments.build 
-        t.build_physician
+        c = @category.appointments.build 
+        c.build_physician
     end
 
     def create

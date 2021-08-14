@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController 
    
     # before_action :redirect_if_not_logged_in
-    # layout "appintment" 
+    # layout "appointment" 
      def index
         if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
             @appointments= @physician.appointments
