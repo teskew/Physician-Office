@@ -10,6 +10,14 @@ class Appointment < ApplicationRecord
   end
 end
 
+       def physician_name
+        self.physician.name
+       end
+
+       def user_name
+        self.user.name
+       end
+
     # => "December 04, 2007 00:00"
     def convert_datetime_to_long_format
         self.appointment_datetime.to_formatted_s(:long)

@@ -2,7 +2,7 @@
 
 
 
-h3>Appointment List: <%= link_to @physician.appointments.date, appointment_path(appointment) %></h3>
+ <h3>Appointment List: <%= @appointment.date %></h3>
 <h2>Physician List:- <%= link_to @appointment.physician.name, physician_path(@appointment.physician) if @appointment.physician %> -  <%= link_to @appointment.physician.email, physician_path(@appointment.physician) if @appointment.physician %></h2>
 
 <h2>Category To:- <%= @appointment.category.name %></h2>

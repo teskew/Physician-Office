@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 
    resources :categories
     resources :appointments, only: [ :new, :index, :create]
-    resources :physicians do 
-    resources :appointments, shallow: true 
+      resources :physicians do 
+         resources :appointments, shallow: true 
    end
    resources :users
 end

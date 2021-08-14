@@ -3,6 +3,7 @@ class AppointmentsController < ApplicationController
     # before_action :redirect_if_not_logged_in
     # layout "appointment" 
      def index
+       
         if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
             @appointments= @physician.appointments
         else
@@ -12,6 +13,7 @@ class AppointmentsController < ApplicationController
     end
 
     def show
+        
         if params[:physician_id]
             @appointment = Physician.find_by_id(params[:physician_id]).appointments.find_by_id(params[:id])
         else
@@ -25,6 +27,7 @@ class AppointmentsController < ApplicationController
     end
 
     def new
+       
         # @appointment= Appointment.new(physician_id: params[:physician_id])   
         # @appointement.build_category
            if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])

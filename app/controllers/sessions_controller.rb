@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
         if user && user.authenticate(params[:user][:password])
      
             session[:user_id] = user.id
-            redirect_to locations_path
+            redirect_to physicians_path
         else
             flash[:message] = "Sorry, login info was incorrect. Please try again." if !params[:user_id]
             redirect_to login_path
