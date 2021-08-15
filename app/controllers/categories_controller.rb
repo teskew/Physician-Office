@@ -7,13 +7,14 @@ class CategoriesController < ApplicationController
     end
 
     def show
-        @category = Category.find_by_id(params[:id])
+      
     end
 
     def new
         @category = Category.new
         c = @category.appointments.build 
         c.build_physician
+        t.build_category
         
     end
 
@@ -27,11 +28,10 @@ class CategoriesController < ApplicationController
     end
 
     def edit
-        @category = Category.find_by_id(params[:id])
+        
     end
 
     def update
-        @category = Category.find_by_id(params[:id])
         @category.update(category_params)
         if @category.valid?
           redirect_to category_path(@category)
@@ -42,6 +42,10 @@ class CategoriesController < ApplicationController
     private
     def category_params
         params.require(:category).permit(:name :appointment_id)
+    end
+    def find_category
+       @category = Category.find_by_id(params([:id]))
+
     end
         
 end

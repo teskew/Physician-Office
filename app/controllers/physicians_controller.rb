@@ -37,11 +37,11 @@ class PhysiciansController < ApplicationController
         end
     end
     def edit 
-        @physician = Physician.find_by_id(params[:id])
+        redirect_to physician_path  if !@physician || @physician.user != current_user
     end
 
     def update 
-        @physician = Physician.find_by_id(params[:id])
+        redirect_to physician_path  if !@physician || @physician.user != current_user
         @physician.update(physician_params)
         if @physician.valid?
             redirect_to physician_path(@physician)

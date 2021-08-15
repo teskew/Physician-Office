@@ -44,9 +44,7 @@ class AppointmentsController < ApplicationController
         end
     
     def create
-        #    if params[:physician_id]
-        #      @physician= Physician.find_by_id(params[:brand_id])
-        #      end
+        
         @appointment = Appointment.new(appointment_params)
         if params[:physician_id]
             @physician = Physician.find_by_id(params[:physician_id])
@@ -70,12 +68,13 @@ class AppointmentsController < ApplicationController
               redirect_to physician_appointments_path(physician), alert: "appointment not found." if @appointment .nil?
             end
           else
-            @appointment = Appointment.find_by_id(params[:id])
+            
           end
     end 
     
     def update 
-        @appointment= Appointment.find_by_id(params[:id])
+  
+        
         @appointement.update(appointement_params)
         if @appointment.valid? 
             redirect_to appointment_path(@appointment)
@@ -94,7 +93,7 @@ class AppointmentsController < ApplicationController
         params.require(:appointment).permit(:date, :physician_id, physician_attributes: [:name, :email], category_attributes: [:name])
     end
     def find_appointment
-        @Appointment= Appointment.find_by_id(params[:id])
+        @appointment= Appointment.find_by_id(params[:id])
     end
 
     
