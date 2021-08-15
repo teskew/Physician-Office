@@ -1,6 +1,6 @@
 class PhysiciansController < ApplicationController 
     before_action :redirect_if_not_logged_in
-    
+    before_action :find_physician, only: [:show, :update, :edit, :destroy]
     def index  
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
             @physicians = @user.physicians.all
@@ -11,15 +11,19 @@ class PhysiciansController < ApplicationController
     end
 
     def show
-        @physician = Physician.find_by_id(params[:id])
-        redirect_to physicians_path if !@Physician
+        redirect_to physicians_path if !@physician
     end
 
     def new 
-            @physician = Physician.new
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @physician = Physician.new(user_id: params[:user_id])
             p = @physician.appointments.build 
              p.build_category
-             #@physician_build_category
+             else
+                @error = "The user doesn't exist!!" if !params[:user_id]
+                @physician= Physician.new
+                @physician.appointments.build
+             end
     end
 
     def create 
@@ -47,19 +51,18 @@ class PhysiciansController < ApplicationController
     end
 
     def destroy 
-        @physician = Physician.find_by_id(params[:id])
         @physician.destroy 
-        redirect_to locations_path
+        redirect_to physicians_path
     end
       
     private 
 
     def physician_params
         params.require(:physician).permit(:name, :email, :user_id, category_ids:[], user_attributes:[:username], appointments_attributes: [:date, :category_id, categories_attributes: [:name]])
-    
     end
-    
-
-
+        def find_physician
+            @physician= Physician.find_by_id(params[:id])
+        end
+   
+    end
        
-end

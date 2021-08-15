@@ -1,9 +1,11 @@
 
   
 <h1> Physician List </h1>
-
+<h2>User Name:- <%= @current_user.username %></h2>
 <ul>
-<% @physicians.each do |physician| %>
-  <li><%= link_to physician.name, physician_path(physician) %> - <%= link_to physician.email, physician_path(physician) %></li>
+
+
+<% current_user.physicians.each do |physician| %>
+  <h2><%= link_to physician.name_and_email, physician_appointments_path(physician)%></h2>
 <% end %>
 </ul>

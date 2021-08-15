@@ -5,7 +5,7 @@
         <%= button_to "Sign in with Google", '/auth/google_oauth2'%>
       <% else %>
       <%= link_to "Create Appointment", new_appointment_path %> |
-      <%= link_to "Appointment", appointments_path %> |
+   
       <%= link_to "Create Physician", new_physician_path %> |
       <%= link_to "Physicians", physicians_path %> | 
         <%= button_to "Logout", logout_path, method:"delete" %>

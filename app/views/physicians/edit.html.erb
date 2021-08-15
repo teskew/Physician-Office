@@ -1,18 +1,12 @@
 
 <h1>Edit Physician: </h1>
-
+%= render partial: "layouts/errors", locals: {object: @physician} %>
 <%= form_for(@physician) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+  <%= render partial: "form", locals: {fp: f} %>
 
-  <h3>Add Appointements:</h3>
-  <%= f.fields_for :appointements do |s| %>
-        <%= s.label :date %>
-        <%= s.datetime_field :date%><br/>
-      
-    <hr>
-  <% end %>
+  <%= f.fields_for :appointements do |t| %>
+        <%= t.label :date %>
+        <%= t.datetime_field :date%><br/>
+    
   <%= f.submit "Update Physician" %>
   <% end %>

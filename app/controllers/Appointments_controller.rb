@@ -1,13 +1,14 @@
 class AppointmentsController < ApplicationController 
    
-    # before_action :redirect_if_not_logged_in
-    # layout "appointment" 
+     before_action :redirect_if_not_logged_in
+      before_action :find_appointment, only: [:show, :update, :edit, :destroy]
+     layout "appointment" 
      def index
-       
+   
         if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
-            @appointments= @physician.appointments
+            @appointments = @physician.appointments
         else
-            #flash[:messaage] = "The Physician does't exist"
+           flash[:messaage] = "The Physician does't exist"
             @appointments = Appointment.all
         end
     end
@@ -17,7 +18,7 @@ class AppointmentsController < ApplicationController
         if params[:physician_id]
             @appointment = Physician.find_by_id(params[:physician_id]).appointments.find_by_id(params[:id])
         else
-            @appointement = Appointment.find_by_id(params[:id])
+            
         end
     end
   
@@ -32,7 +33,7 @@ class AppointmentsController < ApplicationController
         # @appointement.build_category
            if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
           @appointment = Appointment.new(physician_id: params[:physician_id]) 
-          @appointment = @physician.appointments.build
+          #@appointment = @physician.appointments.build
           @appointment.build_category
     
             else
@@ -66,7 +67,7 @@ class AppointmentsController < ApplicationController
               redirect_to physicians_path, alert: "Physician not found."
             else
               @appointment= physician.appointments.find_by(id: params[:id])
-              redirect_to physician_appointments_path(physician), alert: "appointmentnot found." if @trip.nil?
+              redirect_to physician_appointments_path(physician), alert: "appointment not found." if @appointment .nil?
             end
           else
             @appointment = Appointment.find_by_id(params[:id])
@@ -92,6 +93,9 @@ class AppointmentsController < ApplicationController
     def appointment_params
         params.require(:appointment).permit(:date, :physician_id, physician_attributes: [:name, :email], category_attributes: [:name])
     end
-    
+    def find_appointment
+        @Appointment= Appointment.find_by_id(params[:id])
+    end
+
     
 end

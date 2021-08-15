@@ -2,21 +2,8 @@
 
 <h1>Show Page</h1>
 
-<h2>User Name:- <%= @physician.user.username %></h2>
-
-<h2> physician: <%= link_to @physician.name, physician_path %> - <%= link_to @physician.email, physician_path %></h2>
+  User Name:- <%= @physician.user.username %>
+  <h2><%= link_to @physician.name, physician_path %> - <%= link_to @physician.email, physician_path %></h2>
 
 <br/>
-<% @physician.appointements.each do |appointement| %>
-  <h3>Appointement List: <%= link_to (appointement.date), appointement_path(appointement) %></h3>
- 
-  <% @physician.categorys.uniq.each do |category| %>
-    <h3>Travel To: <%=link_to category.name, category %> 
-  <% end %>
-  <hr>
-<% end %> 
-<%= link_to "Edit physician", edit_physician_path(@physician) %> |
-<%= link_to "Back To physicians", physicians_path %> |
-<%= link_to "Add a New appointements", new_physician_appointement_path(@physician) %> |
-<%= link_to "See All appointements", physician_appointements_path(@physician) %> <br><br>
 

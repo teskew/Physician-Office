@@ -1,34 +1,3 @@
-   
-   <h1> Physician Form </h1>
-   <%= render partial: "layouts/errors", locals: {object: @appointment} %>
-<%= form_for([@physician, @appointment]) do |f| %>
-  <%= f.hidden_field :physician_id %>
-  <%= f.label :date%>
-  <%= f.datetime_field :date%>
 
-  <% if @physician %>
-  <%= f.hidden_field :physician_id, value: @physician.id %>
-<% else %>
-      
-
-  <h3>Select an Already Existing physician: </h3>
-    <%= f.collection_select :physician_id, Physician.all, :id, :name %> -
-    <%= f.collection_select :physician_id, Physician.all, :id, :email %>
-  
-  <h3>Create a new physician</h3>
-  <%= f.fields_for :physician do |phy| %>
-    <%= phy.label :name %>
-    <%= phy.text_field :name %>
-    <%= phy.label :email %>
-    <%= phy.text_field :email%>
-  <% end %> 
-  <% end %> 
-  <h3>Create a new Category</h3>
-  <%= f.fields_for :category do |c| %>
-    <%= c.label :name %>
-    <%= c.text_field :name %>
-   
-  <% end %>
-
-   <%= f.submit "Create Appointment" %>
-<% end %>
+<%= form_header_physician  %>
+<%= render partial: "form" %>
