@@ -4,7 +4,7 @@ class Physician < ApplicationRecord
     has_many :categories, through: :appointments
     
     validates :name, presence: true
-    validates :email, presence: true
+    
     
     accepts_nested_attributes_for :appointments, reject_if: proc { |attributes| attributes['appointment_datetime'].blank?}
     validates :name, presence: true 

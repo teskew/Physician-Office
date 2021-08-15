@@ -7,7 +7,7 @@
     <%= render partial: "form", locals: {fp: f} %>
      
   
-  <h3>Add Appointements:</h3>
+  <h3>Add Appointments:</h3>
   <%= f.fields_for :appointments do |t| %>
         <%= t.label :date %>
         <%= t.datetime_field :date%><br/>

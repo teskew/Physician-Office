@@ -94,6 +94,8 @@ class AppointmentsController < ApplicationController
     end
     def find_appointment
         @appointment= Appointment.find_by_id(params[:id])
+
+
     end
 
     

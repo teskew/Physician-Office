@@ -1,8 +1,9 @@
 <%= render partial: "layouts/errors", locals: {object: @appointment} %>
+ 
 <%= form_for([@physician, @appointment]) do |f| %>
-    <%= f.hidden_field :physician_id %>
-<%= f.label :date %>
-<%= f.datetime_field :date %><br/>
+   <%= f.hidden_field :physician_id %>
+    <%= f.label :date %>
+     <%= f.datetime_field :date %><br/>
  
 <%= physician_field_helper(f) %>
 
