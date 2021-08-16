@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The app is about physician office  where user made  an appointment from the list or from the new physician 
 
-Things you may want to cover:
 
-* Ruby version
+#  How the code works
+   config/routes - maches route with controller
+   the logic in action will process the request
+   controller may interact with model
+   the model with their relationships,  acts as medium between data view and controller 
+   finally it renders view with given data
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# what the code has
+  - relationships between the models has many, belong to, has many through relationships
+  - the user has many relation sumbmitted by the app user
+  - rasonable validation
+  -include signup/login/logout
+  - omniauth third party signup
+  -nested resources show and new
+  -validation errors display
