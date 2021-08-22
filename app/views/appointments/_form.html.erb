@@ -1,17 +1,18 @@
 <%= render partial: "layouts/errors", locals: {object: @appointment} %>
  
 <%= form_for([@physician, @appointment]) do |f| %>
-   <%= f.hidden_field :physician_id %>
+  
+    <%= f.hidden_field :physician_id %>
     <%= f.label :date %>
-     <%= f.datetime_field :date %><br/>
+    <%= f.datetime_field :date %><br/>
  
-<%= physician_field_helper(f) %>
+     <h2>Select Physician Name:</h2>
+     <%= f.collection_select :physician_id, Physician.all, :id, :name%>
 
-<h3>Create a new Category</h3>
-<%= f.fields_for :category do |t| %>
-  <%= t.hidden_field :appointment_ids %>
-  <%= t.label :name %>
-  <%= t.text_field :name %>
+    <h3>Create a new Category</h3>
+    <%= f.fields_for :category do |t| %>
+    <%= t.label :name %>
+    <%= t.text_field :name %>
   
   
 <% end %>

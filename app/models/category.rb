@@ -13,4 +13,13 @@ class Category < ApplicationRecord
         self.category = category.find_or_create_by(category_hash)
         end
     end
+  
+
+    # def name
+    #     #{self.name} 
+    # end
+    
+
+
+    
 end

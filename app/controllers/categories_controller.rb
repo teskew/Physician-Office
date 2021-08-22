@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
         @category = Category.new
         c = @category.appointments.build 
         c.build_physician
-        t.build_category
+       
         
     end
 

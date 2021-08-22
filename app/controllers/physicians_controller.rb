@@ -28,8 +28,8 @@ class PhysiciansController < ApplicationController
 
     def create 
    
-        #@physician = Physician.new(physician_params)
         @physician= current_user.physicians.build(physician_params)
+        @physician.user_id = session[:user_id]
         if @physician.save
             redirect_to physician_path(@physician)
         else

@@ -1,8 +1,8 @@
 class AppointmentsController < ApplicationController 
    
-     before_action :redirect_if_not_logged_in
+      before_action :redirect_if_not_logged_in
       before_action :find_appointment, only: [:show, :update, :edit, :destroy]
-     layout "appointment" 
+      layout "appointment" 
      def index
    
         if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
@@ -29,12 +29,9 @@ class AppointmentsController < ApplicationController
 
     def new
        
-        # @appointment= Appointment.new(physician_id: params[:physician_id])   
-        # @appointement.build_category
            if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
-          @appointment = Appointment.new(physician_id: params[:physician_id]) 
-          #@appointment = @physician.appointments.build
-          @appointment.build_category
+             @appointment = Appointment.new(physician_id: params[:physician_id]) 
+             @appointment.build_category
     
             else
             @appointment = Appointment.new
@@ -92,9 +89,10 @@ class AppointmentsController < ApplicationController
     def appointment_params
         params.require(:appointment).permit(:date, :physician_id, physician_attributes: [:name, :email], category_attributes: [:name])
     end
+
+
     def find_appointment
         @appointment= Appointment.find_by_id(params[:id])
-
 
     end
 

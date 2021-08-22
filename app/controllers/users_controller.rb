@@ -20,6 +20,10 @@ class UsersController < ApplicationController
         redirect_to '/' if !@user
     end
 
+    def alpha
+     @users = User.order_alpha
+    end
+
     private
 
     def user_params  # strong params

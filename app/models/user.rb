@@ -13,5 +13,10 @@ class User < ApplicationRecord
             u.password = SecureRandom.hex(15)
         end
     end
+    scope :order_alpha, -> {order(:username)}
+# def self.order_alpha
+#     self.order(:username)
+# end
+
 
 end

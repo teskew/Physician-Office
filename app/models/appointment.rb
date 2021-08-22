@@ -26,7 +26,13 @@ class Appointment < ApplicationRecord
         "#{self.physician.name} - #{self.physician.email}"
       end
     
-
+      scope :order_by_date, -> {order(date: :desc)}
+  
+  
+      # def self.order_by_date  
+      #   # self.order(:date)
+      #   self.order(date: :desc).limit(1)
+      # end
 
 
 
