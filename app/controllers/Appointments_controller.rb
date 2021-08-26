@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController 
-   
+      
       before_action :redirect_if_not_logged_in
       before_action :find_appointment, only: [:show, :update, :edit, :destroy]
       layout "appointment" 
@@ -8,7 +8,7 @@ class AppointmentsController < ApplicationController
         if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
             @appointments = @physician.appointments
         else
-           flash[:messaage] = "The Physician does't exist"
+           
             @appointments = Appointment.all
         end
     end
@@ -28,7 +28,6 @@ class AppointmentsController < ApplicationController
     end
 
     def new
-       
            if params[:physician_id] && @physician = Physician.find_by_id(params[:physician_id])
              @appointment = Appointment.new(physician_id: params[:physician_id]) 
              @appointment.build_category
@@ -70,9 +69,7 @@ class AppointmentsController < ApplicationController
     end 
     
     def update 
-  
-        
-        @appointement.update(appointement_params)
+        @appointment.update(appointment_params)
         if @appointment.valid? 
             redirect_to appointment_path(@appointment)
         else 
@@ -92,7 +89,7 @@ class AppointmentsController < ApplicationController
 
 
     def find_appointment
-        @appointment= Appointment.find_by_id(params[:id])
+        @appointment= Appointment.find(params[:id])
 
     end
 

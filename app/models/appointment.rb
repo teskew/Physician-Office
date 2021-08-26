@@ -4,7 +4,7 @@ class Appointment < ApplicationRecord
      accepts_nested_attributes_for :physician, reject_if: proc { |attributes| attributes['name'].blank? || attributes['email'].blank?}
      accepts_nested_attributes_for :category, reject_if: proc { |attributes| attributes['name'].blank? }
     
-        
+     validates :date, presence: true 
      
      def appointment_attributes=(appointment_hash)
             if !appointment_hash[:name].blank? && !appointment_hash[:address].blank?

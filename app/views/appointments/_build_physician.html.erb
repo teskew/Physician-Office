@@ -3,6 +3,6 @@
 <%= f.collection_select :physician_id, Physician.all, :id, :name %> 
 
 <h3>Create new  physician: </h3>
-<%= f.fields_for :physician do |b| %>
-<%= render partial: "physicians/form", locals: { fp: b } %>
+<%= f.fields_for :physician do |phy| %>
+<%= render partial: "physicians/form", locals: { fp: phy } %>
 <% end %>

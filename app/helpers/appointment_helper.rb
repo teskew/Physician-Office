@@ -23,7 +23,7 @@ def physician_field_helper(f)
    if @physician 
       f.hidden_field :physician_id, value: @physician.id 
     else 
-      render partial: "build_physician", locals: {f: f} 
+      render partial: "build_physician", locals: {fp: f} 
     end 
 end
 

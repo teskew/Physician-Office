@@ -3,7 +3,7 @@
 <h1>Show Page</h1>
 
   <h2>User Name:- <%= @physician.user.username %></h2>
-  <h2><%= link_to @physician.name, physician_path %> - <%= link_to @physician.email, physician_path %></h2>
+  <h2><%= link_to @physician.name_and_email, physician_appointments_path(@physician) %> </h2>
 
 <br/>
 

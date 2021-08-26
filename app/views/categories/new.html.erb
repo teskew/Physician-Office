@@ -1,8 +1,8 @@
 
   <h1> New Category </h1>
   <%= render partial: "layouts/errors", locals: {object: @category} %> 
-<%= form_for(@appointment, @category) do |f| %>
-  %= f.hidden_field :trip_ids %>
+  <%= form_for(@appointment, @category) do |f| %>
+  %= f.hidden_field :appointment_ids %>
     <%= f.label :name %> 
     <%= f.text_field :name%>
     <%= f.submit "Creat Category" %>

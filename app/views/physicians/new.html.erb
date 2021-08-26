@@ -5,14 +5,6 @@
    <%= form_for(@physician) do |f| %>
     <%= f.hidden_field :user_id %>
     <%= render partial: "form", locals: {fp: f} %>
-     
-  
-  <h3>Add Appointments:</h3>
-  <%= f.fields_for :appointments do |t| %>
-        <%= t.label :date %>
-        <%= t.datetime_field :date%><br/>
-      
-    <hr>
-    <% end %>
+ 
   <%= f.submit "create Physican" %>
   <% end %>

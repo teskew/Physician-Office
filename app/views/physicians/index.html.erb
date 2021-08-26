@@ -6,6 +6,6 @@
 
 
 <% current_user.physicians.each do |physician| %>
-  <h2><%= link_to physician.name_and_email, physician_appointments_path(physician)%></h2>
+  <h2><%= link_to physician.name_and_email, physician_appointments_path(physician)%>  </h2>
 <% end %>
 </ul>

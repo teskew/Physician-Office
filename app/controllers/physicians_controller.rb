@@ -1,6 +1,7 @@
 class PhysiciansController < ApplicationController 
     before_action :redirect_if_not_logged_in
     before_action :find_physician, only: [:show, :update, :edit, :destroy]
+    
     def index  
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
             @physicians = @user.physicians.all
@@ -20,7 +21,7 @@ class PhysiciansController < ApplicationController
             p = @physician.appointments.build 
              p.build_category
              else
-                @error = "The user doesn't exist!!" if !params[:user_id]
+                
                 @physician= Physician.new
                 @physician.appointments.build
              end
