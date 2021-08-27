@@ -2,7 +2,7 @@
  
 <%= form_for([@physician, @appointment]) do |f| %>
   
-    <%= f.hidden_field :physician_id %>
+    
     <%= f.label :date %>
     <%= f.datetime_field :date %><br/>
  
@@ -11,6 +11,7 @@
 
     <h3>Create a new Category</h3>
     <%= f.fields_for :category do |t| %>
+   
     <%= t.label :name %>
     <%= t.text_field :name %>
   

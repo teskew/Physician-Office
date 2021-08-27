@@ -1,9 +1,9 @@
 class CategoriesController < ApplicationController 
-  before_action :redirect_if_not_logged_in?
+  before_action :redirect_if_not_logged_in
   before_action :find_category, only: [:show, :update, :edit, :destroy]
 
     def index
-        @categorys = Category.all
+        @categories = Category.all
     end
 
     def show
@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
     def create
          @category = Category.new(category_params)
          if @category.save 
-           redirect_to categorys_path
+           redirect_to categories_path
          else
            render :new
          end
@@ -41,10 +41,10 @@ class CategoriesController < ApplicationController
     end
     private
     def category_params
-        params.require(:category).permit(:name :appointment_id)
+        params.require(:category).permit(:name, :appointment_id)
     end
     def find_category
-       @category = Category.find_by_id(params([:id]))
+       @category = Category.find(params[:id])
 
     end
         

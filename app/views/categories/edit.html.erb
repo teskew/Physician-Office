@@ -1,0 +1,7 @@
+h1>Edit Category Form</h1>
+
+<%= render partial: "layouts/errors", locals: {object: @category} %>
+<%= form_for(@category) do |f| %>
+  <%= render partial: "form", locals: {f: f} %>
+   <%= f.submit "Update Category" %>
+<% end %>
