@@ -1,8 +1,8 @@
 class Appointment < ApplicationRecord
      belongs_to :physician
      belongs_to :category
-     accepts_nested_attributes_for :physician
-     accepts_nested_attributes_for :category
+     accepts_nested_attributes_for :physician, reject_if: proc { |attributes| attributes['name'].blank? || attributes['email'].blank?}
+     accepts_nested_attributes_for :category, reject_if: proc { |attributes| attributes['name'].blank? }
     
      validates :date, presence: true 
      
@@ -14,14 +14,7 @@ class Appointment < ApplicationRecord
 
        
 
-       def physician_name
-        self.physician.name
-       end
-
-       def user_name
-        self.user.name
-       end
-      
+     
        def name_and_email
         "#{self.physician.name} - #{self.physician.email}"
       end

@@ -1,9 +1,9 @@
 class CategoriesController < ApplicationController 
-  before_action :redirect_if_not_logged_in
+  before_action :redirect_if_not_logged_in?
   before_action :find_category, only: [:show, :update, :edit, :destroy]
 
     def index
-        @categories = Category.all
+        @categories = Category.order_by_name.uniq
     end
 
     def show

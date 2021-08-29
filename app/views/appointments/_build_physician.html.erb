@@ -1,5 +1,6 @@
 
-
+<h3>Select an Already Existing physican: </h3>
+<%= f.collection_select :physician_id, Physican.all, :id, :name, prompt: true %> 
 
 <h3>Create new  physician: </h3>
 <%= f.fields_for :physician do |phy| %>

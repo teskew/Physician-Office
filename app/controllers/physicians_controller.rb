@@ -1,5 +1,5 @@
 class PhysiciansController < ApplicationController 
-    before_action :redirect_if_not_logged_in
+    before_action :redirect_if_not_logged_in?
     before_action :find_physician, only: [:show, :update, :edit, :destroy]
     
     def index  
@@ -16,23 +16,15 @@ class PhysiciansController < ApplicationController
     end
 
     def new 
-        if params[:user_id] && @user = User.find_by_id(params[:user_id])
-            @physician = Physician.new(user_id: params[:user_id])
-            p = @physician.appointments.build 
-             p.build_category
-             else
-                
-                @physician= Physician.new
-                @physician.appointments.build
-             end
+         @physician= Physician.new
+         @physician.appointments.build
     end
 
     def create 
    
         @physician= current_user.physicians.build(physician_params)
-        @physician.user_id = session[:user_id]
         if @physician.save
-            redirect_to physician_path(@physician)
+            redirect_to physician_path
         else
             render :new
         end
