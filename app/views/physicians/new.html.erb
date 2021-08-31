@@ -3,7 +3,7 @@
    <%= render partial: "layouts/errors", locals: {object: @physician} %>
    
    <%= form_for(@physician) do |f| %>
-    <%= f.hidden_field :user_id %>
+    
     <%= render partial: "form", locals: {fp: f} %>
  
   <%= f.submit "create Physican" %>

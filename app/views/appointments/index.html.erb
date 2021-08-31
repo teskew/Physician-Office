@@ -1,7 +1,12 @@
    
 <%= index_header_physician   %>
-     
+<% if !@physician%>
 <%= render @appointments %>  
+<% else %>
+ <%= link_to "Add New Physician Appointment", new_physician_appointment_path(@physician) %> 
+ <% end %>
+  
+
 
   
     

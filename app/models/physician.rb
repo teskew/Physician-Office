@@ -7,6 +7,7 @@ class Physician < ApplicationRecord
     validates :name, presence: true
     validates :name, uniqueness: true
     validates :email, presence: true
+    validates :email, uniqueness: true
 
 
     def name_and_email
